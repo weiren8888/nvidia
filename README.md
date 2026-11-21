@@ -1,5 +1,7 @@
 # NVIDIA 公司介紹與市場潛力分析
 
+🔗 **線上瀏覽介紹網頁：<https://weiren8888.github.io/nvidia/doc/nvidia.html>**
+
 整理 NVIDIA（NASDAQ: NVDA）的發展歷史、產品線、財報表現與 AI 領域投資，並提供一份給主管報告用的簡報。
 
 資料截至 **2026 年 11 月**。
