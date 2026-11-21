@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NVIDIA 公司介紹</title>
+<style>
+:root{
+  --bg:#f7f8f5; --surface:#ffffff; --surface-2:#eef1ea; --text:#15180f; --muted:#5b6152;
+  --line:#dde2d5; --accent:#5f9a00; --accent-strong:#4a7a00; --accent-soft:#e6f2d3;
+  --bar:#76b900; --bar-2:#b9d98a; --shadow:0 1px 2px rgba(20,25,10,.06),0 4px 16px rgba(20,25,10,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e100c; --surface:#171a14; --surface-2:#1f231a; --text:#eef1e8; --muted:#a2a995;
+    --line:#2c3125; --accent:#8fd11a; --accent-strong:#a6e23a; --accent-soft:#25300f;
+    --bar:#76b900; --bar-2:#4a6b17; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e100c; --surface:#171a14; --surface-2:#1f231a; --text:#eef1e8; --muted:#a2a995;
+  --line:#2c3125; --accent:#8fd11a; --accent-strong:#a6e23a; --accent-soft:#25300f;
+  --bar:#76b900; --bar-2:#4a6b17; --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.7;font-size:16px}
+a{color:var(--accent-strong)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.brand{font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px;font-size:14px;white-space:nowrap}
+nav a:hover{background:var(--surface-2);color:var(--text)}
+
+.hero{padding:64px 0 40px}
+.eyebrow{color:var(--accent-strong);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.15;margin:10px 0 16px;letter-spacing:-.01em}
+.lede{font-size:18px;color:var(--muted);max-width:720px;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.kpi .v{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi .l{font-size:13px;color:var(--muted)}
+
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:28px;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 28px}
+h3{font-size:17px;margin:0 0 6px}
+
+/* timeline */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:68px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline li{display:grid;grid-template-columns:56px 1fr;gap:28px;padding:10px 0;position:relative}
+.timeline .yr{font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent-strong);text-align:right}
+.timeline li::after{content:"";position:absolute;left:63px;top:18px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--bar)}
+.timeline p{margin:0;color:var(--muted)}
+.timeline b{color:var(--text)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.card .tag{display:inline-block;font-size:12px;font-weight:700;color:var(--accent-strong);background:var(--accent-soft);
+  padding:2px 8px;border-radius:99px;margin-bottom:10px}
+.card p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.card ul{margin:0;padding-left:18px;font-size:14.5px}
+.card li{margin:2px 0}
+
+/* chart */
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.bars{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:12px}
+.row .lab{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.row .lab small{display:block;font-weight:400;color:var(--muted);font-size:12px;line-height:1.2}
+.track{position:relative;height:30px}
+.b{position:absolute;left:0;height:14px;border-radius:0 4px 4px 0}
+.b.rev{top:0;background:var(--bar)}
+.b.ni{top:16px;background:var(--bar-2)}
+.b.ytd{background:repeating-linear-gradient(135deg,var(--bar) 0 6px,color-mix(in srgb,var(--bar) 55%,transparent) 6px 12px)}
+.val{position:absolute;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:14px;color:var(--muted)}
+.val.r{top:0}.val.n{top:16px}
+
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14.5px}
+.tbl{overflow-x:auto;margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:13px;color:var(--muted);font-weight:600;background:var(--surface-2)}
+tbody tr:last-child td{border-bottom:0}
+.up{color:var(--accent-strong)}.down{color:#c2410c}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.inv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline}
+.inv .amt{font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent-strong);text-align:right;min-width:84px}
+.inv .who{font-weight:700}
+.inv .what{grid-column:2;color:var(--muted);font-size:14px;margin-bottom:10px}
+
+.callout{background:var(--accent-soft);border-radius:14px;padding:18px 20px;margin-top:14px}
+.callout p{margin:0}
+
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:13px}
+footer ul{padding-left:18px;margin:8px 0 0}
+
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:40px 0 28px}
+  .timeline::before{left:52px}
+  .timeline li{grid-template-columns:42px 1fr;gap:24px}
+  .timeline li::after{left:47px}
+  .row{grid-template-columns:70px 1fr}
+  .kpi .v{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span>NVIDIA</span> 公司介紹</div>
+    <nav>
+      <a href="#history">發展歷史</a>
+      <a href="#products">產品線</a>
+      <a href="#financials">財報</a>
+      <a href="#ai">AI 投資</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">NASDAQ: NVDA · 總部：美國加州聖塔克拉拉</div>
+    <h1>從遊戲顯示卡到 AI 運算基礎設施</h1>
+    <p class="lede">NVIDIA 成立於 1993 年，最早以 PC 繪圖晶片起家，靠 GPU 與 CUDA 平台成為深度學習的主要運算引擎。今天它的營收有九成來自資料中心，業務橫跨晶片、網路、整櫃系統與軟體，是生成式 AI 浪潮中最關鍵的硬體供應商。</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v">$2,159 億</div><div class="l">FY2026 營收（美元，+65%）</div></div>
+      <div class="kpi"><div class="v">$1,201 億</div><div class="l">FY2026 GAAP 淨利（+65%）</div></div>
+      <div class="kpi"><div class="v">$1,158 億</div><div class="l">FY2027 Q3 單季營收（+103%）</div></div>
+      <div class="kpi"><div class="v">~93%</div><div class="l">Q3 FY27 資料中心營收佔比</div></div>
+    </div>
+  </div>
+
+  <section id="history">
+    <h2>發展歷史</h2>
+    <p class="sub">三十多年來的幾個轉折點：發明 GPU、押注 CUDA、迎上深度學習，最後成為 AI 基礎設施公司。</p>
+    <ol class="timeline">
+      <li><div class="yr">1993</div><div><b>創立</b><p>黃仁勳（Jensen Huang）、Chris Malachowsky、Curtis Priem 在加州創立 NVIDIA，目標是 PC 3D 繪圖加速。</p></div></li>
+      <li><div class="yr">1999</div><div><b>IPO 與 GeForce 256</b><p>於那斯達克上市；推出 GeForce 256，並以「GPU」一詞定義這類繪圖處理器。</p></div></li>
+      <li><div class="yr">2006</div><div><b>CUDA 問世</b><p>推出通用平行運算平台 CUDA，讓 GPU 能用於科學運算，奠定日後軟體生態的護城河。</p></div></li>
+      <li><div class="yr">2012</div><div><b>AlexNet 時刻</b><p>多倫多大學團隊以兩張 GeForce GTX 580 訓練 AlexNet 贏得 ImageNet 競賽，GPU 成為深度學習標準硬體。</p></div></li>
+      <li><div class="yr">2016</div><div><b>DGX-1</b><p>推出第一台 AI 超級電腦 DGX-1，黃仁勳親手將首台交付給剛成立的 OpenAI。</p></div></li>
+      <li><div class="yr">2018</div><div><b>RTX 即時光線追蹤</b><p>Turing 架構帶來 RT Core 與 Tensor Core，DLSS 開始以 AI 輔助遊戲畫面。</p></div></li>
+      <li><div class="yr">2020</div><div><b>收購 Mellanox、推出 A100</b><p>以約 69 億美元收購 Mellanox，取得 InfiniBand 高速網路；Ampere A100 成為雲端 AI 主力。</p></div></li>
+      <li><div class="yr">2022</div><div><b>Hopper H100 與 ChatGPT</b><p>Arm 收購案因監管阻力終止；H100 發表，年底 ChatGPT 問世，帶動 AI 訓練需求爆發。</p></div></li>
+      <li><div class="yr">2024</div><div><b>Blackwell 與市值登頂</b><p>發表 Blackwell 架構與 GB200 NVL72 整櫃系統；收購 Run:ai；市值一度成為全球第一。</p></div></li>
+      <li><div class="yr">2025</div><div><b>市值突破 4 兆、5 兆美元</b><p>Blackwell 全面量產，7 月市值首破 4 兆美元，10 月再破 5 兆美元；大舉投資 AI 生態系。</p></div></li>
+      <li><div class="yr">2026</div><div><b>Vera Rubin 世代</b><p>GTC 2026 正式推出 Vera Rubin 平台並公布 Rubin Ultra（2027）、Feynman（2028）藍圖；Q3 FY27 Vera Rubin NVL72 開始出貨。</p></div></li>
+    </ol>
+  </section>
+
+  <section id="products">
+    <h2>產品線</h2>
+    <p class="sub">NVIDIA 從賣晶片逐步變成賣「整座 AI 工廠」：GPU、CPU、網路、機櫃系統與軟體一起銷售。</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">資料中心運算</span>
+        <h3>AI 加速器與整櫃系統</h3>
+        <p>營收最大來源，供應雲端業者、AI 實驗室與企業。</p>
+        <ul>
+          <li>Hopper：H100 / H200</li>
+          <li>Blackwell：B200、GB200 / GB300 NVL72</li>
+          <li>Vera Rubin NVL72（2026 出貨）</li>
+          <li>Grace、Vera 資料中心 CPU</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">網路</span>
+        <h3>AI 叢集互連</h3>
+        <p>把數萬顆 GPU 連成一台電腦，是第二大成長引擎。</p>
+        <ul>
+          <li>NVLink / NVLink Switch</li>
+          <li>Quantum InfiniBand</li>
+          <li>Spectrum-X 乙太網路、矽光子 CPO</li>
+          <li>ConnectX SuperNIC、BlueField DPU</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">軟體平台</span>
+        <h3>CUDA 生態系</h3>
+        <p>數百萬開發者使用的軟體堆疊，是競爭對手最難複製的部分。</p>
+        <ul>
+          <li>CUDA、cuDNN、TensorRT</li>
+          <li>NVIDIA AI Enterprise、NIM 微服務</li>
+          <li>NeMo、Dynamo 推論框架</li>
+          <li>Omniverse 數位孿生</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">遊戲</span>
+        <h3>GeForce</h3>
+        <p>公司起家的業務，仍是全球獨立顯示卡龍頭。</p>
+        <ul>
+          <li>GeForce RTX 50 系列</li>
+          <li>DLSS 神經渲染</li>
+          <li>GeForce NOW 雲端遊戲</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">專業視覺化</span>
+        <h3>工作站與個人 AI</h3>
+        <p>設計、影視、工程模擬與本地 AI 開發。</p>
+        <ul>
+          <li>RTX PRO 專業顯示卡</li>
+          <li>DGX Spark、DGX Station</li>
+          <li>RTX PRO Server</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">車用與機器人</span>
+        <h3>實體 AI（Physical AI）</h3>
+        <p>自駕車、人形機器人與邊緣裝置。</p>
+        <ul>
+          <li>DRIVE AGX Thor 車用平台</li>
+          <li>Jetson Thor 機器人電腦</li>
+          <li>Isaac、GR00T 機器人模型</li>
+          <li>Cosmos 世界基礎模型</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="financials">
+    <h2>財報</h2>
+    <p class="sub">NVIDIA 會計年度約在每年 1 月底結束，例如 FY2026 為 2025 年 2 月至 2026 年 1 月。單位：億美元（GAAP）。</p>
+
+    <div class="chart">
+      <div class="chart-head">
+        <h3>年度營收與淨利</h3>
+        <div class="legend"><span><i style="background:var(--bar)"></i>營收</span><span><i style="background:var(--bar-2)"></i>淨利</span></div>
+      </div>
+      <div class="bars" id="bars"></div>
+      <p class="note">FY2027 為前三季累計（Q1–Q3），斜紋表示尚未結束的會計年度；FY2027 全年淨利尚未公布，故不列。</p>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>會計年度</th><th>營收</th><th>年增率</th><th>淨利</th><th>年增率</th><th>淨利率</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>166.8</td><td class="up">+53%</td><td>43.3</td><td>—</td><td>26.0%</td></tr>
+          <tr><td>FY2022</td><td>269.1</td><td class="up">+61%</td><td>97.5</td><td class="up">+125%</td><td>36.2%</td></tr>
+          <tr><td>FY2023</td><td>269.7</td><td>+0.2%</td><td>43.7</td><td class="down">−55%</td><td>16.2%</td></tr>
+          <tr><td>FY2024</td><td>609.2</td><td class="up">+126%</td><td>297.6</td><td class="up">+581%</td><td>48.8%</td></tr>
+          <tr><td>FY2025</td><td>1,305.0</td><td class="up">+114%</td><td>728.8</td><td class="up">+145%</td><td>55.8%</td></tr>
+          <tr><td>FY2026</td><td>2,159</td><td class="up">+65%</td><td>1,200.7</td><td class="up">+65%</td><td>55.6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <span class="tag">FY2027 季度</span>
+        <h3>2026 年各季營收</h3>
+        <table>
+          <thead><tr><th>季度</th><th>營收</th><th>年增率</th></tr></thead>
+          <tbody>
+            <tr><td>Q1（至 4 月）</td><td>816</td><td class="up">+85%</td></tr>
+            <tr><td>Q2（至 7 月）</td><td>962</td><td class="up">+106%</td></tr>
+            <tr><td>Q3（至 10 月）</td><td>1,158</td><td class="up">+103%</td></tr>
+            <tr><td>Q4 財測</td><td>~1,300 ±3%</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <span class="tag">解讀</span>
+        <h3>三個重點</h3>
+        <ul>
+          <li><b>FY2023 是谷底：</b>加密挖礦退潮與遊戲卡庫存調整，淨利腰斬。</li>
+          <li><b>FY2024 起爆發：</b>生成式 AI 帶動資料中心需求，營收三年成長約 8 倍。</li>
+          <li><b>FY2027 再加速：</b>前三季營收約 2,936 億美元，已超過 FY2026 全年；Q3 毛利率約 74.8%。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <h2>在 AI 領域的投資</h2>
+    <p class="sub">NVIDIA 用龐大現金流投資 AI 實驗室、雲端算力商與供應鏈夥伴，一方面布局生態系，一方面鞏固 GPU 需求。截至 FY2027 Q2，帳上投資部位約 990 億美元。</p>
+
+    <div class="split" style="margin-top:0">
+      <div class="card">
+        <span class="tag">前沿 AI 實驗室</span>
+        <h3>模型開發商</h3>
+        <div class="inv">
+          <div class="amt">~$300 億</div><div class="who">OpenAI</div>
+          <div class="what">2026 年參與 OpenAI 新一輪募資；先前雙方曾宣布最高千億美元的合作框架。</div>
+          <div class="amt">≤$100 億</div><div class="who">Anthropic</div>
+          <div class="what">2025 年 11 月宣布，與 Microsoft 共同投資，Anthropic 同時承諾採用 NVIDIA 架構算力。</div>
+          <div class="amt">—</div><div class="who">xAI、Mistral、SSI 等</div>
+          <div class="what">參與多家前沿模型公司募資；財務長表示對前沿 AI 實驗室投資合計接近 500 億美元。</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag">產業與基礎設施</span>
+        <h3>供應鏈與算力夥伴</h3>
+        <div class="inv">
+          <div class="amt">$50 億</div><div class="who">Intel</div>
+          <div class="what">2025 年 9 月入股，雙方合作開發 x86 + RTX 的 PC 晶片與資料中心 CPU。</div>
+          <div class="amt">~$200 億</div><div class="who">Groq</div>
+          <div class="what">2025 年 12 月取得推論晶片技術授權並延攬核心團隊，Groq LPU 已納入產品藍圖。</div>
+          <div class="amt">$20 億 / $10 億</div><div class="who">Synopsys / Nokia</div>
+          <div class="what">分別布局 GPU 加速晶片設計軟體與 AI-RAN 電信網路。</div>
+          <div class="amt">—</div><div class="who">CoreWeave、Nebius 等</div>
+          <div class="what">投資 GPU 雲端服務商（neocloud），擴大算力供給管道。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:14px">
+      <div class="card">
+        <span class="tag">併購</span>
+        <h3>補齊技術版圖</h3>
+        <ul>
+          <li>Mellanox（2020，約 69 億美元）：高速網路</li>
+          <li>Run:ai（2024）：GPU 資源調度軟體</li>
+          <li>Deci、OctoAI、Gretel、Lepton AI 等推論與資料公司</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">創投</span>
+        <h3>NVentures 與 Inception</h3>
+        <p>企業創投 NVentures 每年參與數十輪新創募資；Inception 計畫支援全球數萬家 AI 新創，提供技術資源與市場曝光。</p>
+      </div>
+      <div class="card">
+        <span class="tag">主權 AI</span>
+        <h3>國家級 AI 基礎建設</h3>
+        <p>與各國政府和電信商合作建置 AI 資料中心，包括歐洲、中東、日本與台灣等地的 AI 工廠計畫。</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><b>值得注意：</b>市場常質疑 NVIDIA 投資客戶、客戶再回頭買 GPU 的「循環融資」結構。黃仁勳在 2026 年 3 月表示，OpenAI 與 Anthropic 若如預期上市，這兩筆可能是 NVIDIA 對它們最後一次入股。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>資料截至 2026 年 11 月。財務數字以 NVIDIA 官方新聞稿與 SEC 文件為準；投資金額部分來自媒體報導，可能與公司最終揭露不同。本頁僅供介紹參考，不構成投資建議。</p>
+    <p>主要來源：</p>
+    <ul>
+      <li><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026">NVIDIA Q4 &amp; FY2026 財報新聞稿</a></li>
+      <li><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027">NVIDIA Q1 FY2027 財報新聞稿</a></li>
+      <li><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/">NVIDIA Q3 FY2027 財報新聞稿</a></li>
+      <li><a href="https://macrotrends.net/stocks/charts/NVDA/nvidia/revenue">Macrotrends：NVIDIA 歷年營收</a></li>
+      <li><a href="https://www.thestreet.com/technology/nvidia-ceo-makes-surprising-admission-on-openai-and-anthropic">TheStreet：黃仁勳談 OpenAI 與 Anthropic 投資</a></li>
+      <li><a href="https://www.tomshardware.com/pc-components/gpus/nvidia-updates-data-center-roadmap-with-rosa-cpu-and-stacked-feynman-gpus-optical-nvlink-groq-lpus-with-nvfp4-and-nvlink-also-on-deck">Tom's Hardware：GTC 2026 資料中心藍圖</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var data=[
+    {y:"FY2021",r:166.8,n:43.3},
+    {y:"FY2022",r:269.1,n:97.5},
+    {y:"FY2023",r:269.7,n:43.7},
+    {y:"FY2024",r:609.2,n:297.6},
+    {y:"FY2025",r:1305.0,n:728.8},
+    {y:"FY2026",r:2159,n:1200.7},
+    {y:"FY2027",s:"前三季",r:2936,n:null,ytd:true}
+  ];
+  var max=3000, el=document.getElementById("bars");
+  function fmt(v){return v>=1000?Math.round(v).toLocaleString():v.toFixed(1)}
+  data.forEach(function(d){
+    var row=document.createElement("div");row.className="row";
+    var rp=d.r/max*82, np=d.n==null?0:d.n/max*82;
+    row.innerHTML='<div class="lab">'+d.y+(d.s?'<small>'+d.s+'</small>':'')+'</div>'+
+      '<div class="track">'+
+        '<div class="b rev'+(d.ytd?' ytd':'')+'" style="width:'+rp+'%"></div>'+
+        '<span class="val r" style="left:calc('+rp+'% + 6px)">'+fmt(d.r)+'</span>'+
+        (d.n==null?'':'<div class="b ni" style="width:'+np+'%"></div><span class="val n" style="left:calc('+np+'% + 6px)">'+fmt(d.n)+'</span>')+
+      '</div>';
+    el.appendChild(row);
+  });
+})();
+</script>
+</body>
+</html>
